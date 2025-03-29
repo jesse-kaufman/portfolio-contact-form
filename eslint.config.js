@@ -19,16 +19,8 @@ const config = [
     ],
   },
   {
-    "import/resolver": {
-      alias: {
-        map: [["@", "./src"]],
-        extensions: [".js", ".ts", ".jsx", ".tsx"],
-      },
-    },
-  },
-  {
     languageOptions: {
-      globals: { ...globals.browser, ...globals.node, ...globals.jest },
+      globals: { ...globals.browser, ...globals.node },
     },
   },
   {
@@ -197,7 +189,7 @@ const config = [
       "jsdoc/check-values": "warn",
       "jsdoc/informative-docs": "warn",
       "jsdoc/no-undefined-types": "error",
-      "jsdoc/require-file-overview": "error",
+      "jsdoc/require-file-overview": ["error"],
       "jsdoc/sort-tags": [
         "warn",
         {
@@ -244,6 +236,12 @@ const config = [
           ],
         },
       ],
+    },
+  },
+  {
+    files: ["**/*.vue"],
+    rules: {
+      "jsdoc/require-file-overview": "off",
     },
   },
 ]
