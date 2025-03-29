@@ -41,9 +41,6 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"])
 const inputValue = ref(props.modelValue)
 
-// Access $attrs
-const inputAttrs = useAttrs() // This will get the $attrs
-console.log(useAttrs())
 const updateValue = (event) => {
   const newValue = event.target.value
   if (props.validator && !props.validation(newValue)) {
