@@ -21,6 +21,7 @@
       type="tel"
       placeholder="3213213214"
     />
+    <MessageInput v-model="formData.message"></MessageInput>
     <div class="input-submit">
       <button type="submit" disabled>Submit</button>
     </div>
@@ -30,11 +31,13 @@
 <script setup>
 import { ref } from "vue"
 import TextInput from "./TextInput.vue"
+import MessageInput from "./MessageInput.vue"
 
 const formData = ref({
   name: "",
   email: "",
   phone: "",
+  message: "",
 })
 
 const handleSubmit = () => {
