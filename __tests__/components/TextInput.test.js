@@ -1,9 +1,26 @@
 /* eslint-disable max-lines-per-function */
 import { describe, it, expect } from "vitest"
 import { render, fireEvent } from "@testing-library/vue"
-import TextInput from "@/components/TextInput.vue"
+import TextInput, {
+  validateTypeProp,
+  validTypes,
+} from "@/components/TextInput.vue"
 
 describe("TextInput.vue", () => {
+  // Tests for prop validation routines.
+  describe("prop validation", () => {
+    it("validates valid type prop", () => {
+      validTypes.forEach((type) => {
+        expect(() => validateTypeProp(type)).not.toThrow()
+      })
+    })
+
+    it("throws error for invalid type prop", () => {
+      expect(() => validateTypeProp("invalid")).toThrow()
+    })
+  })
+
+  // Tests for component rendering.
   describe("rendering", () => {
     it("renders the input with the correct label", () => {
       const { getByLabelText } = render(TextInput, {
