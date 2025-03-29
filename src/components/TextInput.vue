@@ -61,6 +61,10 @@ const inputValue = ref(props.modelValue)
 const updateValue = (event) => {
   const newValue = event.target.value
 
+  if (
+    props.validator == null ||
+    (props.validator && props.validator(newValue))
+  ) {
     emit("update:model-value", newValue)
   }
 }
