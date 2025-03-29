@@ -15,7 +15,7 @@
       placeholder="john.locke@example.com"
     />
     <TextInput
-      v-model="formData.email"
+      v-model="formData.phone"
       label="Your Phone"
       name="phone"
       type="tel"
