@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <label :for="name">{{ label }}</label>
+  <div class="input-text">
+    <label :for="name">{{ label }}:</label>
     <input
       :id="name"
       v-model="inputValue"
