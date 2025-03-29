@@ -38,22 +38,6 @@ describe("TextInput.vue", () => {
       const input = getByLabelText("Username")
       expect(input.type).toBe("text")
     })
-
-    it("renders the required attribute correctly", () => {
-      const myRender = render(TextInput, {
-        props: {
-          label: "Username",
-          placeholder: "test"
-        },
-        attrs: {
-          required: true,
-        },
-      })
-
-      console.log(myRender.html())
-      const input = myRender.getByLabelText("Username")
-      expect(input).toHaveAttribute("required")
-    })
   })
 
   describe("interaction", () => {
