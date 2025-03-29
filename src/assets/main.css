@@ -7,6 +7,10 @@
   font-weight: normal;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 label {
   font-weight: bold;
   padding-right: 1em;
