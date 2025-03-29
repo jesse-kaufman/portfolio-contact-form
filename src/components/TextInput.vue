@@ -33,8 +33,7 @@ const props = defineProps({
   modelValue: { type: String, default: "" },
   name: { type: String, default: "" },
   label: { type: String, default: "" },
-  validation: { type: Function, default: null },
-  required: { type: Boolean, default: false },
+  validator: { type: Function, default: null },
   placeholder: { type: String, default: "" },
 })
 
@@ -47,8 +46,7 @@ const inputAttrs = useAttrs() // This will get the $attrs
 console.log(useAttrs())
 const updateValue = (event) => {
   const newValue = event.target.value
-  if (props.validation && !props.validation(newValue)) {
-    // handle invalid input
+  if (props.validator && !props.validation(newValue)) {
   } else {
     emit("update:modelValue", newValue)
   }
