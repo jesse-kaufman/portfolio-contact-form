@@ -55,14 +55,13 @@ const props = defineProps({
 })
 
 // Emits definition
-const emit = defineEmits(["update:modelValue"])
+const emit = defineEmits(["update:model-value"])
 const inputValue = ref(props.modelValue)
 
 const updateValue = (event) => {
   const newValue = event.target.value
 
-  if (props.validator && props.validator(newValue)) {
-    emit("update:modelValue", newValue)
+    emit("update:model-value", newValue)
   }
 }
 </script>
