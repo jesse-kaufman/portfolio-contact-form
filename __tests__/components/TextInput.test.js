@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { describe, it, expect } from "vitest"
 import { render, fireEvent } from "@testing-library/vue"
 import TextInput from "@/components/TextInput.vue"
