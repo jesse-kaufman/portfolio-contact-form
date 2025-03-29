@@ -17,6 +17,14 @@ div.input-text {
 div.input-submit {
   text-align: center;
 }
+div.preview-container {
+  margin-top: 2em;
+}
+div.preview {
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px
+}
 
 @media (hover: hover) {
   a:hover {
