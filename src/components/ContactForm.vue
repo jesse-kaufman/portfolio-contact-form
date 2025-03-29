@@ -6,7 +6,9 @@
       name="name"
       type="text"
     />
-    <button type="submit" disabled>Submit</button>
+    <div class="input-submit">
+      <button type="submit" disabled>Submit</button>
+    </div>
   </form>
 </template>
 
