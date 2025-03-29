@@ -35,8 +35,15 @@ div.input-submit {
 div.preview-container {
   margin-top: 2em;
 }
+div.preview .header {
+  border-bottom: 1px solid grey;
+  padding: 10px 0;
+}
 div.preview {
   border: 1px solid grey;
+  border-radius: 6px;
+  padding: 0 10px 10px 10px
+}
 form {
   display: block;
   margin: 0 auto;
