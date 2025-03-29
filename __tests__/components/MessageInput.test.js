@@ -7,12 +7,15 @@ describe("MessageInput.vue", () => {
   // Test component rendering.
   it("renders the message box correctly", () => {
     const { getByLabelText } = render(MessageInput)
+
     // Get component object for testing.
     const input = getByLabelText("Message:")
+
     // Check component for proper render.
     expect(input).toBeInTheDocument()
     expect(input.placeholder).toBe("Type your message here.")
     expect(input.name).toBe("message")
+    expect(input.id).toBe("message")
   })
 
   // Tests for component interaction.
