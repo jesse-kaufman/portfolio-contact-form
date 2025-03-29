@@ -13,12 +13,23 @@
   </div>
 </template>
 
+<script>
+const validateType = (type) => {
+  const validTypes = ["text", "email", "number", "tel"]
+  if (validTypes.includes(type)) return true
+}
+</script>
+
 <script setup>
 import { ref, defineProps, defineEmits, useAttrs } from "vue"
 
 // Props definition
 const props = defineProps({
-  type: { type: String, default: "text" },
+  type: {
+    type: String,
+    default: "text",
+    validator: validateType,
+  },
   modelValue: { type: String, default: "" },
   name: { type: String, default: "" },
   label: { type: String, default: "" },
