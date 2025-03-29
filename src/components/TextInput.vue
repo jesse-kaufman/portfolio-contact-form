@@ -14,9 +14,26 @@
 </template>
 
 <script>
-const validateType = (type) => {
-  const validTypes = ["text", "email", "number", "tel"]
-  if (validTypes.includes(type)) return true
+/** Allowed values for type prop. */
+export const validTypes = ["text", "email", "number", "tel"]
+
+/**
+ * Validates type prop.
+ * @param {string} type - Value for type prop on InputText.
+ * @returns {boolean} True if valid.
+ * @throws {TypeError} If type is not a string.
+ * @throws {Error} If type is not in validTypes.
+ */
+export const validateTypeProp = (type) => {
+  if (typeof type !== "string") throw new TypeError("Type must be a string.")
+
+  if (!validTypes.includes(type)) {
+    throw new Error(
+      `Invalid type: ${type}; must be one of: ${validTypes.join(", ")}`
+    )
+  }
+
+  return true
 }
 </script>
 
@@ -28,7 +45,7 @@ const props = defineProps({
   type: {
     type: String,
     default: "text",
-    validator: validateType,
+    validator: validateTypeProp,
   },
   modelValue: { type: String, default: "" },
   name: { type: String, default: "" },
