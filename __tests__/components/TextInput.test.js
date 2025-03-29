@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest"
 import { render, fireEvent } from "@testing-library/vue"
-import TextInput from "@/contact-form/components/TextInput.vue"
+import TextInput from "@/components/TextInput.vue"
 
 describe("TextInput.vue", () => {
   describe("rendering", () => {
