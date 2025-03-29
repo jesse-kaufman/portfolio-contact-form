@@ -57,6 +57,16 @@ describe("TextInput.vue", () => {
       })
       const input = getByLabelText("Name:")
       expect(input.type).toBe("text")
+
+      render(TextInput, {
+        props: {
+          label: "Phone",
+          name: "phone",
+          type: "tel",
+        },
+      })
+      const input2 = getByLabelText("Phone:")
+      expect(input2.type).toBe("tel")
     })
   })
 
