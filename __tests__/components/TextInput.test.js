@@ -39,10 +39,10 @@ describe("TextInput.vue", () => {
           label: "Name",
           name: "name",
           type: "text",
-          placeholder: "Enter your name",
+          placeholder: "John Locke",
         },
       })
-      const input = getByPlaceholderText("Enter your name")
+      const input = getByPlaceholderText("John Locke")
       expect(input).toBeInTheDocument()
     })
 
