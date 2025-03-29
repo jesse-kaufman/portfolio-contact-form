@@ -38,7 +38,7 @@ export const validateTypeProp = (type) => {
 </script>
 
 <script setup>
-import { ref, useAttrs } from "vue"
+import { ref } from "vue"
 
 // Props definition
 const props = defineProps({
@@ -65,6 +65,4 @@ const updateValue = (event) => {
     emit("update:modelValue", newValue)
   }
 }
-const $attrs = useAttrs()
-console.log($attrs)
 </script>
