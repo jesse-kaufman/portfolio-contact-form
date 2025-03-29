@@ -30,6 +30,13 @@ describe("ContactForm component", () => {
     expect(phoneField.value).toBe("")
     expect(phoneField.placeholder).toBe("3213213214")
 
+    // Check message field.
+    const msgField = screen.getByLabelText(/message:/i)
+    expect(msgField).toBeDefined()
+    expect(msgField.value).toBe("")
+    expect(msgField.name).toBe("message")
+    expect(msgField.placeholder).toBe("Type your message here.")
+
     // Check submit button.
     expect(screen.getByRole("button", { name: /submit/i })).toBeDisabled()
   })
