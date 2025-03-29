@@ -10,6 +10,7 @@ describe("ContactForm component", () => {
     const nameField = screen.getByLabelText(/your name:/i)
     expect(nameField).toBeDefined()
     expect(nameField.type).toBe("text")
+    expect(nameField.name).toBe("name")
     expect(nameField.value).toBe("")
     expect(nameField.placeholder).toBe("John Locke")
 
@@ -17,6 +18,7 @@ describe("ContactForm component", () => {
     const emailField = screen.getByLabelText(/your email:/i)
     expect(emailField).toBeDefined()
     expect(emailField.type).toBe("text")
+    expect(emailField.name).toBe("email")
     expect(emailField.value).toBe("")
     expect(emailField.placeholder).toBe("john.locke@example.com")
 
@@ -24,6 +26,7 @@ describe("ContactForm component", () => {
     const phoneField = screen.getByLabelText(/your phone:/i)
     expect(phoneField).toBeDefined()
     expect(phoneField.type).toBe("tel")
+    expect(phoneField.name).toBe("phone")
     expect(phoneField.value).toBe("")
     expect(phoneField.placeholder).toBe("3213213214")
 
