@@ -27,32 +27,14 @@
     </div>
   </form>
 
-  <div v-if="hasData()" class="preview-container">
-    <strong>Message preview:</strong>
-    <div class="preview">
-      <div class="header">
-        <div v-if="formData.name" class="input-item">
-          <strong>To:</strong> Jesse Kaufman
-        </div>
-        <div v-if="formData.name" class="input-item">
-          <strong>From:</strong> {{ formData.name }}
-          <span v-if="formData.email">&lt;{{ formData.email }}&gt;</span>
-        </div>
-        <div v-if="formData.phone" class="input-item">
-          <strong>Phone:</strong> {{ formData.phone }}
-        </div>
-      </div>
-      <div v-if="formData.message" class="input-item">
-        <p>{{ formData.message }}</p>
-      </div>
-    </div>
-  </div>
+  <Preview v-if="hasData()" :formData="formData"></Preview>
 </template>
 
 <script setup>
 import { reactive } from "vue"
 import TextInput from "./TextInput.vue"
 import MessageInput from "./MessageInput.vue"
+import Preview from "./Preview.vue"
 
 const formData = reactive({
   name: "",
