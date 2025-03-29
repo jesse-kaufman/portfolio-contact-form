@@ -40,6 +40,11 @@ const formData = reactive({
   message: "",
 })
 
+const hasData = () => {
+  console.log(Object.keys(formData))
+  return Object.keys(formData).filter((prop) => formData[prop] !== "").length
+}
+
 const handleSubmit = () => {
   console.log("Form submitted with data:", formData.value)
 }
