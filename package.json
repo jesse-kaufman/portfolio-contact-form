@@ -11,10 +11,13 @@
   "description": "This repository holds the files used to generate my [portfolio site](https://www.jessekaufman.com) which is powered by [Hugo CMS](https://www.gohugo.io). Github actions deploy changes to the live site when commits are pushed to Github.",
   "main": "src/api/server.js",
   "scripts": {
-    "dev": "node --env-file .env src/api/server.js",
+    "dev": "vite",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "start": "node src/api/server.js"
+    "format": "prettier --write src/",
+    "lint": "eslint . --fix",
+    "preview": "vite preview",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -37,6 +40,7 @@
     "eslint-plugin-prettier": "^5.2.5",
     "eslint-plugin-vue": "^10.0.0",
     "jsdom": "^26.0.0",
+    "vite-plugin-vue-devtools": "^7.7.2",
     "vitest": "^3.0.9"
   }
 }
