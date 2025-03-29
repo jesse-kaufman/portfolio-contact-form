@@ -21,7 +21,7 @@ const validateType = (type) => {
 </script>
 
 <script setup>
-import { ref, defineProps, defineEmits, useAttrs } from "vue"
+import { ref, useAttrs } from "vue"
 
 // Props definition
 const props = defineProps({
