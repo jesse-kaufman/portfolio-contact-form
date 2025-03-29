@@ -19,6 +19,14 @@ const config = [
     ],
   },
   {
+    "import/resolver": {
+      alias: {
+        map: [["@", "./src"]],
+        extensions: [".js", ".ts", ".jsx", ".tsx"],
+      },
+    },
+  },
+  {
     languageOptions: {
       globals: { ...globals.browser, ...globals.node, ...globals.jest },
     },
@@ -39,14 +47,6 @@ const config = [
       sourceType: "module",
     },
     rules: {
-      overrides: [
-        {
-          files: ["*.vue"],
-          rules: {
-            "jsdoc/require-file-overview": "off",
-          },
-        },
-      ],
       "vue/no-v-html": "error", // big NO : sensible to XSS
       "vue/html-indent": 0,
       "vue/singleline-html-element-content-newline": 0,
@@ -213,6 +213,7 @@ const config = [
           ],
         },
       ],
+      "jsdoc/linesBetween": ["off"],
       "eol-last": ["error", "always"],
       "jsdoc/require-jsdoc": [
         "error",
