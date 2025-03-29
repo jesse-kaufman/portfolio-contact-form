@@ -7,35 +7,37 @@ describe("TextInput.vue", () => {
     it("renders the input with the correct label", () => {
       const { getByLabelText } = render(TextInput, {
         props: {
-          label: "Username",
+          label: "Name",
           modelValue: "",
-          name: "username",
+          name: "name",
           type: "text",
         },
       })
-      const input = getByLabelText("Username")
-      expect(input).toBeInTheDocument()
+      expect(getByLabelText("Name:")).toBeInTheDocument()
     })
 
     it("renders the placeholder correctly", () => {
       const { getByPlaceholderText } = render(TextInput, {
         props: {
-          label: "Username",
-          placeholder: "Enter your username",
+          label: "Name",
+          name: "name",
+          type: "text",
+          placeholder: "Enter your name",
         },
       })
-      const input = getByPlaceholderText("Enter your username")
+      const input = getByPlaceholderText("Enter your name")
       expect(input).toBeInTheDocument()
     })
 
     it("renders the input with the correct type", () => {
       const { getByLabelText } = render(TextInput, {
         props: {
-          label: "Username",
+          label: "Name",
+          name: "name",
           type: "text",
         },
       })
-      const input = getByLabelText("Username")
+      const input = getByLabelText("Name:")
       expect(input.type).toBe("text")
     })
   })
@@ -48,7 +50,7 @@ describe("TextInput.vue", () => {
           name: "email",
         },
       })
-      const input = getByLabelText("Email")
+      const input = getByLabelText("Email:")
       await fireEvent.update(input, "test@example.com")
       expect(input.value).toBe("test@example.com")
     })
