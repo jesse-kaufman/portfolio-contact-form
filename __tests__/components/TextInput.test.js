@@ -70,6 +70,7 @@ describe("TextInput.vue", () => {
     })
   })
 
+  // Tests for component interaction.
   describe("interaction", () => {
     it("binds the value correctly with v-model", async () => {
       const { getByLabelText } = render(TextInput, {
