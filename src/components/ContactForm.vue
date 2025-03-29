@@ -29,11 +29,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { reactive } from "vue"
 import TextInput from "./TextInput.vue"
 import MessageInput from "./MessageInput.vue"
 
-const formData = ref({
+const formData = reactive({
   name: "",
   email: "",
   phone: "",
