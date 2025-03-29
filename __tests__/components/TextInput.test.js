@@ -26,7 +26,6 @@ describe("TextInput.vue", () => {
       const { getByLabelText } = render(TextInput, {
         props: {
           label: "Name",
-          modelValue: "",
           name: "name",
           type: "text",
         },
