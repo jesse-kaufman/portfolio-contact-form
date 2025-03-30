@@ -18,6 +18,7 @@ describe("TextInput.vue", () => {
 
     it("throws error for invalid type prop", () => {
       expect(() => validateTypeProp("invalid")).toThrow()
+      expect(() => validateTypeProp(1)).toThrow()
     })
   })
 

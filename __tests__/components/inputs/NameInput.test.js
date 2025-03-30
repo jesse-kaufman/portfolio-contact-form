@@ -21,23 +21,21 @@ describe("NameInput.vue", () => {
       const instance = mount(NameInput).vm
 
       // Test if first name only was provided.
-      expect(() => instance.validateName("Jack")).not.toThrowError()
+      expect(() => instance.validateName("Jack")).not.toThrow()
       // Test if full name was provided.
-      expect(() => instance.validateName("Jack Sawyer")).not.toThrowError()
+      expect(() => instance.validateName("Jack Sawyer")).not.toThrow()
       // Test if extra-long full name was provided.
-      expect(() =>
-        instance.validateName("Jack L. Sawyer III")
-      ).not.toThrowError()
+      expect(() => instance.validateName("Jack L. Sawyer III")).not.toThrow()
     })
 
     it("throws an error for invalid name", () => {
       const instance = mount(NameInput).vm
 
       // Test too-short name.
-      expect(() => instance.validateName("a")).toThrowError()
+      expect(() => instance.validateName("a")).toThrow()
       // Test too-long name.
       // eslint-disable-next-line no-magic-numbers
-      expect(() => instance.validateName("a".repeat(255))).toThrowError()
+      expect(() => instance.validateName("a".repeat(255))).toThrow()
     })
   })
 

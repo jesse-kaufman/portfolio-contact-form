@@ -25,11 +25,11 @@ describe("MessageInput.vue", () => {
   describe("input validation", () => {
     it("validates proper message", () => {
       // Test validating valid message.
-      expect(() => validateMessage("This is a message.")).not.toThrowError()
+      expect(() => validateMessage("This is a message.")).not.toThrow()
     })
 
     it("throws an error for invalid message", () => {
-      expect(() => validateMessage("Hey.")).toThrowError()
+      expect(() => validateMessage("Hey.")).toThrow()
     })
   })
 

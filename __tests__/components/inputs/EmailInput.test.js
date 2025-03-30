@@ -20,13 +20,13 @@ describe("EmailInput.vue", () => {
       const instance = mount(EmailInput).vm
       expect(() =>
         instance.validateEmail("john.locke@example.com")
-      ).not.toThrowError()
+      ).not.toThrow()
     })
 
     it("throws an error for invalid email", () => {
       const instance = mount(EmailInput).vm
-      expect(() => instance.validateEmail("john locke@example")).toThrowError()
-      expect(() => instance.validateEmail("Sayid")).toThrowError()
+      expect(() => instance.validateEmail("john locke@example")).toThrow()
+      expect(() => instance.validateEmail("Sayid")).toThrow()
     })
   })
 

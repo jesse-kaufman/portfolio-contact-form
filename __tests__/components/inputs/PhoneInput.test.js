@@ -20,15 +20,15 @@ describe("PhoneInput.vue", () => {
     it("validates proper phone", () => {
       const instance = mount(PhoneInput).vm
       // Test multiple valid phone number formats.
-      expect(() => instance.validatePhone("3213213214")).not.toThrowError()
-      expect(() => instance.validatePhone("(321) 321-3214")).not.toThrowError()
-      expect(() => instance.validatePhone("321-321-3214")).not.toThrowError()
+      expect(() => instance.validatePhone("3213213214")).not.toThrow()
+      expect(() => instance.validatePhone("(321) 321-3214")).not.toThrow()
+      expect(() => instance.validatePhone("321-321-3214")).not.toThrow()
     })
 
     it("throws an error for invalid email", () => {
       const instance = mount(PhoneInput).vm
       // Test invalid phone number.
-      expect(() => instance.validatePhone("481516")).toThrowError()
+      expect(() => instance.validatePhone("481516")).toThrow()
     })
   })
 
