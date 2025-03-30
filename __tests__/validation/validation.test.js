@@ -8,8 +8,9 @@ import {
   validatePhone,
 } from "@/services/validation"
 
-describe("Contact form validation", () => {
-  describe("email", () => {
+describe("Input validation", () => {
+  // Test email input validation.
+  describe("validateEmail", () => {
     it("validates proper email", () => {
       expect(() => validateEmail("john.locke@example.com")).not.toThrowError()
     })
@@ -20,7 +21,8 @@ describe("Contact form validation", () => {
     })
   })
 
-  describe("name", () => {
+  // Test name input validation.
+  describe("validateName", () => {
     it("validates proper name", () => {
       // Test if first name only was provided.
       expect(() => validateName("Jack")).not.toThrowError()
@@ -39,8 +41,8 @@ describe("Contact form validation", () => {
     })
   })
 
-  // Test phone field.
-  describe("phone", () => {
+  // Test phone input validation.
+  describe("validatePhone", () => {
     it("validates proper phone", () => {
       // Test multiple valid phone number formats.
       expect(() => validatePhone("3213213214")).not.toThrowError()
@@ -54,7 +56,7 @@ describe("Contact form validation", () => {
   })
 
   // Test message input validation.
-  describe("message", () => {
+  describe("validateMessage", () => {
     it("validates proper message", () => {
       // Test validating valid message.
       expect(() => validateMessage("This is a message.")).not.toThrowError()
