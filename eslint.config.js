@@ -50,7 +50,7 @@ const config = [
       sourceType: "module",
     },
     rules: {
-      "vue/no-v-html": "error", // big NO : sensible to XSS
+      "vue/no-v-html": "error", // Big NO : sensible to XSS
       "vue/html-indent": 0,
       "vue/singleline-html-element-content-newline": 0,
       "vue/html-self-closing": "off",
