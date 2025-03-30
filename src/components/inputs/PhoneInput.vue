@@ -2,6 +2,7 @@
   <TextInput
     v-model="modelValue"
     name="phone"
+    type="tel"
     label="Your Phone"
     placeholder="3213213214"
     required
