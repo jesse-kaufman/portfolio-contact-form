@@ -1,4 +1,4 @@
-/* eslint-disable max-lines-per-function */
+/** @file MessageInput component test. */
 import { describe, it, expect } from "vitest"
 import { render, fireEvent } from "@testing-library/vue"
 import MessageInput from "@/components/MessageInput.vue"
