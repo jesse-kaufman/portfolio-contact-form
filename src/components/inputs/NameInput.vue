@@ -9,8 +9,6 @@
   />
 </template>
 
-<script></script>
-
 <script setup>
 import { ref } from "vue"
 import TextInput from "../base/TextInput.vue"
