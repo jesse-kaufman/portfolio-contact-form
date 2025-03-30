@@ -60,7 +60,7 @@ describe("MessageInput.vue", () => {
 
       // Expect error to be displayed.
       expect(
-        getByText("Name must be between 2 and 254 characters long.")
+        getByText("Message must be at least 10 characters long.")
       ).toBeInTheDocument()
     })
   })
