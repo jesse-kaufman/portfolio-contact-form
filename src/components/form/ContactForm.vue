@@ -1,14 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <TextInput
-      v-model="formData.name"
-      label="Your Name"
-      name="name"
-      type="text"
-      :validator="validateName"
-      required
-      placeholder="John Locke"
-    />
+    <NameInput v-model="formData.name" />
     <TextInput
       v-model="formData.email"
       label="Your Email"
@@ -37,13 +29,10 @@
 
 <script setup>
 import { reactive } from "vue"
-import {
-  validateEmail,
-  validateName,
-  validatePhone,
-} from "../../services/validation"
-import TextInput from "../inputs/TextInput.vue"
+import { validateEmail, validatePhone } from "../../services/validation"
+import TextInput from "../base/TextInput.vue"
 import MessageInput from "../inputs/MessageInput.vue"
+import NameInput from "../inputs/NameInput.vue"
 import Preview from "./FormPreview.vue"
 
 const formData = reactive({
