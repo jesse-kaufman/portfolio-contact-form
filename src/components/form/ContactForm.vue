@@ -48,9 +48,3 @@ const handleSubmit = () => {
   console.log("Form submitted with data:", formData.value)
 }
 </script>
-
-<style scoped>
-label {
-  font-weight: bold;
-}
-</style>
