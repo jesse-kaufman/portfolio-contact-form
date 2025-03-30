@@ -27,7 +27,7 @@
     </div>
   </form>
 
-  <Preview v-if="hasData()" :formData="formData"></Preview>
+  <Preview v-if="hasData()" :form-data="formData"></Preview>
 </template>
 
 <script setup>
