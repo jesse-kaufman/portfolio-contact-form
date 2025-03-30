@@ -41,6 +41,10 @@ const config = [
           map: [["@", "./src"]],
           extensions: [".js", ".ts", ".vue", ".jsx", ".tsx"],
         },
+        node: {
+          extensions: [".js", ".ts", ".mjs"],
+          moduleDirectory: ["node_modules", "src/"],
+        },
       },
     },
   },
