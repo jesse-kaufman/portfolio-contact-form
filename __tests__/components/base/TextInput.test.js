@@ -1,4 +1,5 @@
 /** @file TextInput component tests. */
+/* eslint-disable no-magic-numbers */
 /* eslint-disable max-lines-per-function */
 import { describe, expect, it } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/vue"
