@@ -87,4 +87,28 @@ describe("TextInput.vue", () => {
       expect(input.value).toBe("test@example.com")
     })
   })
+
+  // Tests for component interaction.
+  describe("interaction", () => {
+    it("shows error when invalid and removes when corrected", async () => {
+      render(TextInput, {
+        props: {
+          label: "Text Input",
+          name: "text",
+          validator(input) {
+            if (input.length <= 2) throw new Error("Too short.")
+          },
+        },
+      })
+
+      // Set text to invalid value and check for error.
+      const input = screen.getByLabelText("Text Input:")
+      await fireEvent.update(input, "D")
+      expect(screen.getByText("Too short.")).toBeInTheDocument()
+
+      // Set email back to valid value and check that the error is gone.
+      await fireEvent.update(input, "Dharma")
+      expect(screen.queryByText("Too short.")).toBeNull()
+    })
+  })
 })
