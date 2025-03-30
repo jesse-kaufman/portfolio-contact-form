@@ -1,3 +1,5 @@
+/** @file ContactForm.vue tests. */
+/* eslint-disable max-statements */
 import { describe, test, expect } from "vitest"
 import { render, screen } from "@testing-library/vue"
 import ContactForm from "@/components/ContactForm.vue"
