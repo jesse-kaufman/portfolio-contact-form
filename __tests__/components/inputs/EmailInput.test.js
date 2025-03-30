@@ -41,12 +41,14 @@ describe("EmailInput.vue", () => {
       expect(input.value).toBe("john.lock@example.com")
     })
 
-    // Test setting an invalid value.
-    it("throws error when setting invalid data with v-model", async () => {
-      const { getByText, getByLabelText } = render(EmailInput)
-      const input = getByLabelText("Your Email:")
-      await fireEvent.update(input, "J")
-      expect(getByText("Invalid email address.")).toBeInTheDocument()
+    it("shows error when invalid and removes when corrected", async () => {
+      // Set email to invalid value and check for error.
+      const emailInput = screen.getByLabelText("Your Email:")
+      await fireEvent.update(emailInput, "J")
+      expect(screen.getByText("Invalid email address.")).toBeInTheDocument()
+      // Set email back to valid value and check that the error is gone.
+      await fireEvent.update(emailInput, "john.lock@example.com")
+      expect(screen.queryByText("Invalid email address.")).toBeNull()
     })
   })
 })

@@ -49,14 +49,18 @@ describe("NameInput.vue", () => {
       expect(input.value).toBe("John Locke")
     })
 
-    // Test setting an invalid value.
-    it("throws error when setting invalid data with v-model", async () => {
-      const { getByText, getByLabelText } = render(NameInput)
-      const input = getByLabelText("Your Name:")
-      await fireEvent.update(input, "J")
+    it("shows and removes error when invalid data is corrected", async () => {
+      // Set name to invalid value and check for error.
+      const nameInput = screen.getByLabelText("Your Name:")
+      await fireEvent.update(nameInput, "J")
       expect(
-        getByText("Name must be between 2 and 254 characters long.")
+        screen.getByText("Name must be between 2 and 254 characters long.")
       ).toBeInTheDocument()
+      // Set name back to valid value and check that error is gone.
+      await fireEvent.update(nameInput, "John Locke")
+      expect(
+        screen.queryByText("Name must be between 2 and 254 characters long.")
+      ).toBeNull()
     })
   })
 })

@@ -42,12 +42,14 @@ describe("PhoneInput.vue", () => {
       expect(input.value).toBe("3213213214")
     })
 
-    // Test setting an invalid value.
-    it("throws error when setting invalid data with v-model", async () => {
-      const { getByText, getByLabelText } = render(PhoneInput)
-      const input = getByLabelText("Your Phone:")
-      await fireEvent.update(input, "J")
-      expect(getByText("Invalid phone number.")).toBeInTheDocument()
+    it("shows and removes error when invalid data is corrected", async () => {
+      // Set phone to invalid value and check for error.
+      const phoneInput = screen.getByLabelText("Your Phone:")
+      await fireEvent.update(phoneInput, "J")
+      expect(screen.getByText("Invalid phone number.")).toBeInTheDocument()
+      // Set phone back to valid value and check for error.
+      await fireEvent.update(phoneInput, "3213213214")
+      expect(screen.queryByText("Invalid phone number.")).toBeNull()
     })
   })
 })
