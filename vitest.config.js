@@ -1,5 +1,6 @@
-import { defineConfig } from "vitest/config"
+/** @file Vitest configuration. */
 import path from "path"
+import { defineConfig } from "vitest/config"
 import vue from "@vitejs/plugin-vue"
 
 export default defineConfig({
