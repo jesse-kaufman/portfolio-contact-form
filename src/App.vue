@@ -4,7 +4,7 @@ import ContactForm from "./components/form/ContactForm.vue"
 
 <template>
   <main>
-    <ContactForm></ContactForm>
+    <ContactForm />
   </main>
 </template>
 
