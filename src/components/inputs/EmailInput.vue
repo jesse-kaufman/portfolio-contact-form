@@ -13,6 +13,8 @@
 import { ref } from "vue"
 import TextInput from "../base/TextInput.vue"
 
+const modelValue = ref("")
+
 /**
  * Validates email input field.
  * @param {string} email - Input to be validated.
@@ -23,7 +25,7 @@ const validateEmail = (email) => {
     throw Error("Invalid email address.")
   }
 }
-const modelValue = ref("")
+
 // Expose validateEmail for testing or external access
 defineExpose({
   validateEmail,
