@@ -1,7 +1,7 @@
 /** @file MessageInput component test. */
 import { describe, it, expect } from "vitest"
 import { render, fireEvent } from "@testing-library/vue"
-import MessageInput from "@/components/MessageInput.vue"
+import MessageInput from "@/components/inputs/MessageInput.vue"
 
 describe("MessageInput.vue", () => {
   // Test component rendering.

@@ -5,7 +5,7 @@ import { render, fireEvent } from "@testing-library/vue"
 import TextInput, {
   validateTypeProp,
   validTypes,
-} from "@/components/TextInput.vue"
+} from "@/components/base/TextInput.vue"
 
 describe("TextInput.vue", () => {
   // Tests for prop validation routines.
