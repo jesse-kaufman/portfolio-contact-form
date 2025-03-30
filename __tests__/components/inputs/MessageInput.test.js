@@ -1,17 +1,17 @@
 /** @file MessageInput component test. */
 /* eslint-disable max-lines-per-function */
 import { describe, expect, it } from "vitest"
-import { fireEvent, render } from "@testing-library/vue"
+import { fireEvent, render, screen } from "@testing-library/vue"
 import { mount } from "@vue/test-utils"
 import MessageInput from "@/components/inputs/MessageInput.vue"
 
 describe("MessageInput.vue", () => {
   // Test component rendering.
   it("renders the message box correctly", () => {
-    const { getByLabelText } = render(MessageInput)
+    render(MessageInput)
 
     // Get component object for testing.
-    const input = getByLabelText("Message:")
+    const input = screen.getByLabelText("Message:")
 
     // Check component for proper render.
     expect(input).toBeInTheDocument()
@@ -41,10 +41,10 @@ describe("MessageInput.vue", () => {
       // Message to send and check for.
       const message = "This is my message."
       // Render message.
-      const { getByLabelText } = render(MessageInput)
+      render(MessageInput)
 
       // Get input and update.
-      const input = getByLabelText("Message:")
+      const input = screen.getByLabelText("Message:")
       await fireEvent.update(input, message)
 
       // Message value should match message sent.
@@ -53,15 +53,15 @@ describe("MessageInput.vue", () => {
 
     // Test setting an invalid value.
     it("throws error when setting invalid data with v-model", async () => {
-      const { getByLabelText, getByText } = render(MessageInput)
+      render(MessageInput)
 
       // Get input and update.
-      const input = getByLabelText("Message:")
+      const input = screen.getByLabelText("Message:")
       await fireEvent.update(input, "A")
 
       // Expect error to be displayed.
       expect(
-        getByText("Message must be at least 10 characters long.")
+        screen.getByText("Message must be at least 10 characters long.")
       ).toBeInTheDocument()
     })
   })
