@@ -55,14 +55,9 @@ const hasData = computed(
 /**
  * Checks if form is valid.
  */
-const isFormValid = computed(() => {
-  console.log(
-    Object.values(formData).every((field) => !field.error && field.value !== "")
-  )
-  return Object.values(formData).every(
-    (field) => !field.error && field.value !== ""
-  )
-})
+const isFormValid = computed(() =>
+  Object.values(formData).every((field) => !field.error && field.value !== "")
+)
 
 const handleSubmit = () => {
   console.log("Form submitted with data:", formData.value)
