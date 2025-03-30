@@ -35,7 +35,7 @@ const props = defineProps({
 })
 
 // Emits definition
-const emit = defineEmits(["update:modelValue"])
+const emit = defineEmits(["update:modelValue", "update:error"])
 const modelValue = ref(props.modelValue)
 const error = ref(false) // Error state
 const errorMessage = ref("") // Error message
@@ -56,5 +56,7 @@ const updateValue = (event) => {
     error.value = true
     errorMessage.value = err.message
   }
+
+  emit("update:error", error.value)
 }
 </script>
