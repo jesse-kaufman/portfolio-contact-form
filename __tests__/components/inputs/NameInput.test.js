@@ -61,6 +61,17 @@ describe("NameInput.vue", () => {
       expect(
         screen.queryByText("Name must be between 2 and 254 characters long.")
       ).toBeNull()
+
+      // Set name to an invalid value again.
+      await fireEvent.update(nameInput, "%#tewt6734b$%")
+      expect(
+        screen.getByText("Name contains an invalid character.")
+      ).toBeInTheDocument()
+      // Set name back to valid value and check that error is gone.
+      await fireEvent.update(nameInput, "John Locke")
+      expect(
+        screen.queryByText("Name must be between 2 and 254 characters long.")
+      ).toBeNull()
     })
   })
 })
