@@ -23,7 +23,7 @@
 
 <script setup>
 // Props definition
-const props = defineProps({
+defineProps({
   formData: {
     type: Object,
     required: true,
