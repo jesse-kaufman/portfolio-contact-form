@@ -1,8 +1,8 @@
 /* eslint-disable max-lines-per-function */
 /** @file PhoneInput component tests. */
 
-import { describe, it, expect } from "vitest"
-import { render, fireEvent } from "@testing-library/vue"
+import { describe, expect, it } from "vitest"
+import { fireEvent, render, screen } from "@testing-library/vue"
 import { mount } from "@vue/test-utils"
 import PhoneInput from "@/components/inputs/PhoneInput.vue"
 

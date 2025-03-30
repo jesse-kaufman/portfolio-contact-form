@@ -1,7 +1,7 @@
 /** @file ContactForm.vue tests. */
 /* eslint-disable max-statements */
-import { describe, test, expect } from "vitest"
-import { render, screen } from "@testing-library/vue"
+import { describe, expect, it } from "vitest"
+import { fireEvent, render, screen } from "@testing-library/vue"
 import ContactForm from "@/components/form/ContactForm.vue"
 
 describe("ContactForm component", () => {

@@ -1,8 +1,8 @@
 /** @file EmailInput component tests. */
 
-import { describe, it, expect } from "vitest"
+import { describe, expect, it } from "vitest"
+import { fireEvent, render, screen } from "@testing-library/vue"
 import { mount } from "@vue/test-utils"
-import { render, fireEvent } from "@testing-library/vue"
 import EmailInput from "@/components/inputs/EmailInput.vue"
 
 describe("EmailInput.vue", () => {
