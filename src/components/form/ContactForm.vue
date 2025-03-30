@@ -1,9 +1,21 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <NameInput v-model="formData.name.value" />
-    <EmailInput v-model="formData.email.value" />
-    <PhoneInput v-model="formData.phone.value" />
-    <MessageInput v-model="formData.message.value"></MessageInput>
+    <NameInput
+      v-model="formData.name.value"
+      @update:error="updateError('name', $event)"
+    />
+    <EmailInput
+      v-model="formData.email.value"
+      @update:error="updateError('name', $event)"
+    />
+    <PhoneInput
+      v-model="formData.phone.value"
+      @update:error="updateError('name', $event)"
+    />
+    <MessageInput
+      v-model="formData.message.value"
+      @update:error="updateError('name', $event)"
+    ></MessageInput>
     <div class="input-submit">
       <button type="submit" :disabled="!isFormValid">Submit</button>
     </div>
@@ -26,6 +38,10 @@ const formData = reactive({
   phone: { value: "", error: false },
   message: { value: "", error: false },
 })
+
+const updateError = (field, error) => {
+  formData[field].error = error
+}
 
 /**
  * Checks if form state has any valid data.
