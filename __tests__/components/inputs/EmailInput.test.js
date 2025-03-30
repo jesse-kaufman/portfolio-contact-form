@@ -1,8 +1,9 @@
 /** @file EmailInput component tests. */
 
 import { describe, it, expect } from "vitest"
+import { mount } from "@vue/test-utils"
 import { render, fireEvent } from "@testing-library/vue"
-import EmailInput, { validateEmail } from "@/components/inputs/EmailInput.vue"
+import EmailInput from "@/components/inputs/EmailInput.vue"
 
 describe("EmailInput.vue", () => {
   // Tests for component rendering.
@@ -16,12 +17,16 @@ describe("EmailInput.vue", () => {
   // Test email input validation.
   describe("input validation", () => {
     it("validates proper email", () => {
-      expect(() => validateEmail("john.locke@example.com")).not.toThrowError()
+      const instance = mount(EmailInput).vm
+      expect(() =>
+        instance.validateEmail("john.locke@example.com")
+      ).not.toThrowError()
     })
 
     it("throws an error for invalid email", () => {
-      expect(() => validateEmail("john locke@example")).toThrowError()
-      expect(() => validateEmail("Sayid")).toThrowError()
+      const instance = mount(EmailInput).vm
+      expect(() => instance.validateEmail("john locke@example")).toThrowError()
+      expect(() => instance.validateEmail("Sayid")).toThrowError()
     })
   })
 

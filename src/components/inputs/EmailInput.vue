@@ -9,22 +9,22 @@
   />
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue"
+import TextInput from "../base/TextInput.vue"
 /**
  * Validates email input field.
  * @param {string} email - Input to be validated.
  * @throws {Error} If validation fails.
  */
-export const validateEmail = (email) => {
+const validateEmail = (email) => {
   if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i)) {
     throw Error("Invalid email address.")
   }
 }
-</script>
-
-<script setup>
-import { ref } from "vue"
-import TextInput from "../base/TextInput.vue"
-
 const modelValue = ref("")
+// Expose validateEmail for testing or external access
+defineExpose({
+  validateEmail,
+})
 </script>
