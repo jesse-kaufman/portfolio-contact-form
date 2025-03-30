@@ -2,14 +2,7 @@
   <form @submit.prevent="handleSubmit">
     <NameInput v-model="formData.name" />
     <EmailInput v-model="formData.email" />
-    <TextInput
-      v-model="formData.phone"
-      label="Your Phone"
-      name="phone"
-      type="tel"
-      :validator="validatePhone"
-      placeholder="3213213214"
-    />
+    <PhoneInput v-model="formData.phone" />
     <MessageInput v-model="formData.message"></MessageInput>
     <div class="input-submit">
       <button type="submit" disabled>Submit</button>
@@ -21,8 +14,7 @@
 
 <script setup>
 import { reactive } from "vue"
-import { validatePhone } from "../../services/validation"
-import TextInput from "../base/TextInput.vue"
+import PhoneInput from "../inputs/PhoneInput.vue"
 import EmailInput from "../inputs/EmailInput.vue"
 import MessageInput from "../inputs/MessageInput.vue"
 import NameInput from "../inputs/NameInput.vue"
