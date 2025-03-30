@@ -5,6 +5,7 @@
     v-model="inputValue"
     name="message"
     placeholder="Type your message here."
+    required
     @input="updateValue"
   ></textarea>
 </template>

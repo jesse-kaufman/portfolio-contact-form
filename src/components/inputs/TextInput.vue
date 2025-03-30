@@ -61,11 +61,17 @@ const inputValue = ref(props.modelValue)
 const updateValue = (event) => {
   const newValue = event.target.value
 
-  if (
-    props.validator == null ||
-    (props.validator && props.validator(newValue))
-  ) {
+  // Emit update event if no validator is set.
+  if (props.validator == null) {
     emit("update:model-value", newValue)
+  }
+
+  try {
+    props.validator(newValue)
+    emit("update:model-value", newValue)
+  } catch (err) {
+    // XXX: Display message in UI here
+    console.log(err)
   }
 }
 </script>

@@ -5,6 +5,8 @@
       label="Your Name"
       name="name"
       type="text"
+      :validator="validateName"
+      required
       placeholder="John Locke"
     />
     <TextInput
@@ -12,6 +14,8 @@
       label="Your Email"
       name="email"
       type="text"
+      :validator="validateEmail"
+      required
       placeholder="john.locke@example.com"
     />
     <TextInput
@@ -19,6 +23,7 @@
       label="Your Phone"
       name="phone"
       type="tel"
+      :validator="validatePhone"
       placeholder="3213213214"
     />
     <MessageInput v-model="formData.message"></MessageInput>
@@ -32,8 +37,13 @@
 
 <script setup>
 import { reactive } from "vue"
-import TextInput from "./TextInput.vue"
-import MessageInput from "./MessageInput.vue"
+import {
+  validateEmail,
+  validateName,
+  validatePhone,
+} from "../../services/validation"
+import TextInput from "../inputs/TextInput.vue"
+import MessageInput from "../inputs/MessageInput.vue"
 import Preview from "./FormPreview.vue"
 
 const formData = reactive({
@@ -43,6 +53,10 @@ const formData = reactive({
   message: "",
 })
 
+/**
+ * Checks if form state has any valid data.
+ * @returns {boolean} True if any field has input, otherwise false.
+ */
 const hasData = () => {
   console.log(Object.keys(formData))
   return Object.keys(formData).filter((prop) => formData[prop] !== "").length
