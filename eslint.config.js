@@ -213,9 +213,9 @@ const config = [
             { tags: ["yields"] },
             { tags: ["returns"] },
           ],
+          linesBetween: 0,
         },
       ],
-      "jsdoc/linesBetween": ["off"],
       "eol-last": ["error", "always"],
       "jsdoc/require-jsdoc": [
         "error",
