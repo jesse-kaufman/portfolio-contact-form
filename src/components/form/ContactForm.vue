@@ -60,6 +60,7 @@ const isFormValid = computed(() =>
 )
 
 const handleSubmit = () => {
-  console.log("Form submitted with data:", formData.value)
+  console.log("Form submitted with data:")
+  console.log(formData.value)
 }
 </script>
