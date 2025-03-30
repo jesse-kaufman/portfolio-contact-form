@@ -61,9 +61,64 @@ describe("ContactForm component", () => {
   describe("interaction", () => {
     // Test setting a valid value.
     it("updates state correctly", async () => {
-      const input = screen.getByLabelText("Your Email:")
-      await fireEvent.update(input, "john.lock@example.com")
-      expect(input.value).toBe("john.lock@example.com")
+      // Render(ContactForm)
+
+      const nameInput = screen.getByLabelText("Your Name:")
+      const emailInput = screen.getByLabelText("Your Email:")
+      const phoneInput = screen.getByLabelText("Your Phone:")
+      const messageInput = screen.getByLabelText("Message:")
+
+      await fireEvent.update(nameInput, "John Doe")
+      await fireEvent.update(emailInput, "john@example.com")
+      await fireEvent.update(phoneInput, "1234567890")
+      await fireEvent.update(messageInput, "This is a message")
+
+      expect(nameInput.value).toBe("John Doe")
+      expect(emailInput.value).toBe("john@example.com")
+      expect(phoneInput.value).toBe("1234567890")
+      expect(messageInput.value).toBe("This is a message")
+    })
+
+    it("disables the submit button if the form is not valid", () => {
+      //Render(ContactForm)
+
+      const submitButton = screen.getByText("Submit")
+      expect(submitButton).toBeDisabled()
+    })
+
+    it("enables the submit button when the form is valid", async () => {
+      // Simulate filling out the form with valid data
+      const nameInput = screen.getByLabelText("Your Name:")
+      const emailInput = screen.getByLabelText("Your Email:")
+      const phoneInput = screen.getByLabelText("Your Phone:")
+      const messageInput = screen.getByLabelText("Message:")
+
+      await fireEvent.update(nameInput, "John Doe")
+      await fireEvent.update(emailInput, "john@example.com")
+      await fireEvent.update(phoneInput, "1234567890")
+      await fireEvent.update(messageInput, "This is a message")
+
+      const submitButton = screen.getByText("Submit")
+      expect(submitButton).not.toBeDisabled()
+    })
+
+    it("submits the form when the submit button is clicked", async () => {
+      const nameInput = screen.getByLabelText("Your Name:")
+      const emailInput = screen.getByLabelText("Your Email:")
+      const phoneInput = screen.getByLabelText("Your Phone:")
+      const messageInput = screen.getByLabelText("Message:")
+      const submitButton = screen.getByText("Submit")
+
+      // Simulate valid input data
+      await fireEvent.update(nameInput, "John Doe")
+      await fireEvent.update(emailInput, "john@example.com")
+      await fireEvent.update(phoneInput, "1234567890")
+      await fireEvent.update(messageInput, "This is a message")
+
+      // Submit the form
+      await fireEvent.click(submitButton)
+
+      expect(console.log).toHaveBeenCalledWith("Form submitted with data:")
     })
   })
 })
