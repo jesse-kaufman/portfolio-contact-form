@@ -32,3 +32,11 @@ defineProps({
   },
 })
 </script>
+
+<style scoped>
+/* Add any styling for your textarea or preview */
+.input-item.message {
+  white-space: pre-wrap; /* Ensures the text wraps correctly */
+  word-wrap: break-word;
+}
+</style>
