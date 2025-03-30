@@ -1,14 +1,27 @@
 /** @file ContactForm.vue tests. */
 /* eslint-disable max-lines-per-function */
 /* eslint-disable max-statements */
-import { describe, expect, it } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/vue"
 import ContactForm from "@/components/form/ContactForm.vue"
 
 describe("ContactForm component", () => {
-  it("renders the contact form", () => {
-    render(ContactForm)
+  let unmount = null
 
+  beforeEach(() => {
+    const { unmount: u } = render(ContactForm)
+    unmount = u
+
+    vi.spyOn(console, "log").mockImplementation(() => {})
+  })
+
+  afterEach(() => {
+    // Clean up the mock after each test
+    vi.restoreAllMocks()
+    unmount()
+  })
+
+  it("renders the contact form", () => {
     // Check name field.
     const nameField = screen.getByLabelText(/your name:/i)
     expect(nameField).toBeDefined()
