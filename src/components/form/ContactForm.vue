@@ -1,9 +1,9 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <NameInput v-model="formData.name" />
-    <EmailInput v-model="formData.email" />
-    <PhoneInput v-model="formData.phone" />
-    <MessageInput v-model="formData.message"></MessageInput>
+    <NameInput v-model="formData.name.value" />
+    <EmailInput v-model="formData.email.value" />
+    <PhoneInput v-model="formData.phone.value" />
+    <MessageInput v-model="formData.message.value"></MessageInput>
     <div class="input-submit">
       <button type="submit" disabled>Submit</button>
     </div>
@@ -21,10 +21,10 @@ import NameInput from "../inputs/NameInput.vue"
 import Preview from "./FormPreview.vue"
 
 const formData = reactive({
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
+  name: { value: "", error: false },
+  email: { value: "", error: false },
+  phone: { value: "", error: false },
+  message: { value: "", error: false },
 })
 
 /**
