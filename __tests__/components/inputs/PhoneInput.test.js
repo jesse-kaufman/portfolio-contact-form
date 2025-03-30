@@ -1,8 +1,10 @@
+/* eslint-disable max-lines-per-function */
 /** @file PhoneInput component tests. */
 
 import { describe, it, expect } from "vitest"
 import { render, fireEvent } from "@testing-library/vue"
-import PhoneInput, { validatePhone } from "@/components/inputs/PhoneInput.vue"
+import { mount } from "@vue/test-utils"
+import PhoneInput from "@/components/inputs/PhoneInput.vue"
 
 describe("PhoneInput.vue", () => {
   // Tests for component rendering.
@@ -16,14 +18,17 @@ describe("PhoneInput.vue", () => {
   // Test phone input validation.
   describe("input validation", () => {
     it("validates proper phone", () => {
+      const instance = mount(PhoneInput).vm
       // Test multiple valid phone number formats.
-      expect(() => validatePhone("3213213214")).not.toThrowError()
-      expect(() => validatePhone("(321) 321-3214")).not.toThrowError()
-      expect(() => validatePhone("321-321-3214")).not.toThrowError()
+      expect(() => instance.validatePhone("3213213214")).not.toThrowError()
+      expect(() => instance.validatePhone("(321) 321-3214")).not.toThrowError()
+      expect(() => instance.validatePhone("321-321-3214")).not.toThrowError()
     })
 
     it("throws an error for invalid email", () => {
-      expect(() => validatePhone("481516")).toThrowError()
+      const instance = mount(PhoneInput).vm
+      // Test invalid phone number.
+      expect(() => instance.validatePhone("481516")).toThrowError()
     })
   })
 
