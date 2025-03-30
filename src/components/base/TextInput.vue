@@ -3,13 +3,15 @@
     <label :for="name">{{ label }}:</label>
     <input
       :id="name"
-      v-model="inputValue"
+      v-model="modelValue"
       v-bind="$attrs"
       :name="name"
       :type="type"
       :placeholder="placeholder"
+      :class="{ 'input-error': error }"
       @input="updateValue"
     />
+    <div v-if="error" class="error-message">{{ errorMessage }}</div>
   </div>
 </template>
 
@@ -55,23 +57,32 @@ const props = defineProps({
 })
 
 // Emits definition
-const emit = defineEmits(["update:model-value"])
-const inputValue = ref(props.modelValue)
+const emit = defineEmits(["update:modelValue"])
+const modelValue = ref(props.modelValue)
+const error = ref(false) // Error state
+const errorMessage = ref("") // Error message
 
 const updateValue = (event) => {
   const newValue = event.target.value
 
+  // Reset error state.
+  error.value = false
+  errorMessage.value = ""
+
   // Emit update event if no validator is set.
   if (props.validator == null) {
-    emit("update:model-value", newValue)
+    emit("update:modelValue", newValue)
+    return
   }
 
   try {
     props.validator(newValue)
-    emit("update:model-value", newValue)
+    // Emit update event if valid.
+    emit("update:modelValue", newValue)
   } catch (err) {
-    // XXX: Display message in UI here
-    console.log(err)
+    // Set error state and message.
+    error.value = true
+    errorMessage.value = err.message
   }
 }
 </script>
