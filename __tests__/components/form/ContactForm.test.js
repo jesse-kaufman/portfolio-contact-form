@@ -43,4 +43,14 @@ describe("ContactForm component", () => {
     // Check submit button.
     expect(screen.getByRole("button", { name: /submit/i })).toBeDisabled()
   })
+
+  // Tests for component interaction.
+  describe("interaction", () => {
+    // Test setting a valid value.
+    it("updates state correctly", async () => {
+      const input = screen.getByLabelText("Your Email:")
+      await fireEvent.update(input, "john.lock@example.com")
+      expect(input.value).toBe("john.lock@example.com")
+    })
+  })
 })
