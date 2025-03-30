@@ -2,8 +2,8 @@
   <label for="message">Message:</label>
   <textarea
     id="message"
-    name="message"
     v-model="inputValue"
+    name="message"
     placeholder="Type your message here."
     @input="updateValue"
   ></textarea>
