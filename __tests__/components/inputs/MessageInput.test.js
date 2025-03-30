@@ -1,10 +1,8 @@
 /* eslint-disable max-lines-per-function */
-/** @file MessageInput component test. */
-import { describe, it, expect } from "vitest"
-import { render, fireEvent } from "@testing-library/vue"
-import MessageInput, {
-  validateMessage,
-} from "@/components/inputs/MessageInput.vue"
+import { describe, expect, it } from "vitest"
+import { fireEvent, render } from "@testing-library/vue"
+import { mount } from "@vue/test-utils"
+import MessageInput from "@/components/inputs/MessageInput.vue"
 
 describe("MessageInput.vue", () => {
   // Test component rendering.
@@ -23,13 +21,15 @@ describe("MessageInput.vue", () => {
 
   // Test message input validation.
   describe("input validation", () => {
+    const instance = mount(MessageInput).vm
+
     it("validates proper message", () => {
       // Test validating valid message.
-      expect(() => validateMessage("This is a message.")).not.toThrow()
+      expect(() => instance.validateMessage("This is a message.")).not.toThrow()
     })
 
     it("throws an error for invalid message", () => {
-      expect(() => validateMessage("Hey.")).toThrow()
+      expect(() => instance.validateMessage("Hey.")).toThrow()
     })
   })
 
