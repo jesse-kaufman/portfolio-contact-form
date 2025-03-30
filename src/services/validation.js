@@ -12,7 +12,7 @@ export const validateName = (name) => {
     throw Error("Name must be between 2 and 254 characters long.")
   }
 
-  if (name.match(/^[a-z.\- ]/i)) {
+  if (!name.match(/^[a-z.\- ]/i)) {
     throw Error("Name contains an invalid character.")
   }
 }
@@ -23,7 +23,7 @@ export const validateName = (name) => {
  * @throws {Error} If validation fails.
  */
 export const validateEmail = (email) => {
-  if (email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i)) {
+  if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i)) {
     throw Error("Invalid email address.")
   }
 }
@@ -31,13 +31,23 @@ export const validateEmail = (email) => {
 /**
  * Validates phone input field.
  * @param {string} phone - Input to be validated.
- * @returns {boolean} True if valid, otherwise false.
+ * @throws {Error} If validation fails.
  */
-export const validatePhone = (phone) =>
-  phone.match(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/i)
+export const validatePhone = (phone) => {
+  if (!phone.match(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/i)) {
+    throw Error("Invalid phone number.")
+  }
+}
 
 /**
  * Validates message input field.
- * @param {string} message - Input to be validated.
- * @returns {boolean} True if valid, otherwise false.
+ * @param {string} msg - Input to be validated.
+ * @throws {Error} If validation fails.
  */
+export const validateMessage = (msg) => {
+  // Check that name is between 2 and 254 characters.
+  // eslint-disable-next-line no-magic-numbers
+  if (msg.length < 10) {
+    throw Error("Name must be at least 10 characters long.")
+  }
+}
