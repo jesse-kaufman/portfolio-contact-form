@@ -10,8 +10,8 @@ describe("EmailInput.vue", () => {
   // Tests for component rendering.
   describe("rendering", () => {
     it("renders the input with the correct label", () => {
-      const { getByLabelText } = render(EmailInput)
-      expect(getByLabelText("Your Email:")).toBeInTheDocument()
+      render(EmailInput)
+      expect(screen.getByLabelText("Your Email:")).toBeInTheDocument()
     })
   })
 
@@ -35,8 +35,8 @@ describe("EmailInput.vue", () => {
   describe("interaction", () => {
     // Test setting a valid value.
     it("binds the value correctly with v-model", async () => {
-      const { getByLabelText } = render(EmailInput)
-      const input = getByLabelText("Your Email:")
+      render(EmailInput)
+      const input = screen.getByLabelText("Your Email:")
       await fireEvent.update(input, "john.lock@example.com")
       expect(input.value).toBe("john.lock@example.com")
     })
@@ -46,6 +46,7 @@ describe("EmailInput.vue", () => {
       const emailInput = screen.getByLabelText("Your Email:")
       await fireEvent.update(emailInput, "J")
       expect(screen.getByText("Invalid email address.")).toBeInTheDocument()
+
       // Set email back to valid value and check that the error is gone.
       await fireEvent.update(emailInput, "john.lock@example.com")
       expect(screen.queryByText("Invalid email address.")).toBeNull()

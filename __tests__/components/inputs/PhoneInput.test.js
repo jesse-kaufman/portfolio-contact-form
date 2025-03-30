@@ -10,8 +10,8 @@ describe("PhoneInput.vue", () => {
   // Tests for component rendering.
   describe("rendering", () => {
     it("renders the input with the correct label", () => {
-      const { getByLabelText } = render(PhoneInput)
-      expect(getByLabelText("Your Phone:")).toBeInTheDocument()
+      render(PhoneInput)
+      expect(screen.getByLabelText("Your Phone:")).toBeInTheDocument()
     })
   })
 
@@ -36,8 +36,8 @@ describe("PhoneInput.vue", () => {
   describe("interaction", () => {
     // Test setting a valid value.
     it("binds the value correctly with v-model", async () => {
-      const { getByLabelText } = render(PhoneInput)
-      const input = getByLabelText("Your Phone:")
+      render(PhoneInput)
+      const input = screen.getByLabelText("Your Phone:")
       await fireEvent.update(input, "3213213214")
       expect(input.value).toBe("3213213214")
     })

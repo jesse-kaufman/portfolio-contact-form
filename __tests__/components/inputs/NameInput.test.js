@@ -10,8 +10,8 @@ describe("NameInput.vue", () => {
   // Tests for component rendering.
   describe("rendering", () => {
     it("renders the input with the correct label", () => {
-      const { getByLabelText } = render(NameInput)
-      expect(getByLabelText("Your Name:")).toBeInTheDocument()
+      render(NameInput)
+      expect(screen.getByLabelText("Your Name:")).toBeInTheDocument()
     })
   })
 
@@ -43,8 +43,8 @@ describe("NameInput.vue", () => {
   describe("interaction", () => {
     // Test setting a valid value.
     it("binds the value correctly with v-model", async () => {
-      const { getByLabelText } = render(NameInput)
-      const input = getByLabelText("Your Name:")
+      render(NameInput)
+      const input = screen.getByLabelText("Your Name:")
       await fireEvent.update(input, "John Locke")
       expect(input.value).toBe("John Locke")
     })

@@ -1,7 +1,7 @@
 /** @file TextInput component tests. */
 /* eslint-disable max-lines-per-function */
 import { describe, expect, it } from "vitest"
-import { fireEvent, render } from "@testing-library/vue"
+import { fireEvent, render, screen } from "@testing-library/vue"
 
 import TextInput, {
   validateTypeProp,
@@ -26,18 +26,18 @@ describe("TextInput.vue", () => {
   // Tests for component rendering.
   describe("rendering", () => {
     it("renders the input with the correct label", () => {
-      const { getByLabelText } = render(TextInput, {
+      render(TextInput, {
         props: {
           label: "Name",
           name: "name",
           type: "text",
         },
       })
-      expect(getByLabelText("Name:")).toBeInTheDocument()
+      expect(screen.getByLabelText("Name:")).toBeInTheDocument()
     })
 
     it("renders the placeholder correctly", () => {
-      const { getByPlaceholderText } = render(TextInput, {
+      render(TextInput, {
         props: {
           label: "Name",
           name: "name",
@@ -45,19 +45,19 @@ describe("TextInput.vue", () => {
           placeholder: "John Locke",
         },
       })
-      const input = getByPlaceholderText("John Locke")
+      const input = screen.getByPlaceholderText("John Locke")
       expect(input).toBeInTheDocument()
     })
 
     it("renders the input with the correct type", () => {
-      const { getByLabelText } = render(TextInput, {
+      render(TextInput, {
         props: {
           label: "Name",
           name: "name",
           type: "text",
         },
       })
-      const input = getByLabelText("Name:")
+      const input = screen.getByLabelText("Name:")
       expect(input.type).toBe("text")
 
       render(TextInput, {
@@ -67,7 +67,7 @@ describe("TextInput.vue", () => {
           type: "tel",
         },
       })
-      const input2 = getByLabelText("Phone:")
+      const input2 = screen.getByLabelText("Phone:")
       expect(input2.type).toBe("tel")
     })
   })
@@ -75,13 +75,13 @@ describe("TextInput.vue", () => {
   // Tests for component interaction.
   describe("interaction", () => {
     it("binds the value correctly with v-model", async () => {
-      const { getByLabelText } = render(TextInput, {
+      render(TextInput, {
         props: {
           label: "Email",
           name: "email",
         },
       })
-      const input = getByLabelText("Email:")
+      const input = screen.getByLabelText("Email:")
       await fireEvent.update(input, "test@example.com")
       expect(input.value).toBe("test@example.com")
     })
