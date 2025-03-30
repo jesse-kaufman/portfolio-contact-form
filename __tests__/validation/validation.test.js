@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 /** @file Validation tests for contact form. */
 import { describe, expect, it } from "vitest"
 import {
