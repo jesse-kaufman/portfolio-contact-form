@@ -1,12 +1,10 @@
 /* eslint-disable max-lines-per-function */
 /** @file Validation tests for contact form. */
 import { describe, expect, it } from "vitest"
-import {
-  validateMessage,
-  validateEmail,
-  validateName,
-  validatePhone,
-} from "@/services/validation"
+import { validateEmail } from "../../src/components/inputs/EmailInput.vue"
+import { validatePhone } from "../../src/components/inputs/PhoneInput.vue"
+import { validateName } from "../../src/components/inputs/NameInput.vue"
+import { validateMessage } from "../../src/components/inputs/MessageInput.vue"
 
 describe("Input validation", () => {
   // Test email input validation.

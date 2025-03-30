@@ -10,6 +10,21 @@
   ></textarea>
 </template>
 
+<script>
+/**
+ * Validates message input field.
+ * @param {string} msg - Input to be validated.
+ * @throws {Error} If validation fails.
+ */
+export const validateMessage = (msg) => {
+  // Check that name is between 2 and 254 characters.
+  // eslint-disable-next-line no-magic-numbers
+  if (msg.length < 10) {
+    throw Error("Name must be at least 10 characters long.")
+  }
+}
+</script>
+
 <script setup>
 import { ref } from "vue"
 

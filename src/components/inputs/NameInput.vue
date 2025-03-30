@@ -9,9 +9,27 @@
   />
 </template>
 
+<script>
+/**
+ * Validates name input field.
+ * @param {string} name - Input to be validated.
+ * @throws {Error} If validation fails.
+ */
+export const validateName = (name) => {
+  // Check that name is between 2 and 254 characters.
+  // eslint-disable-next-line no-magic-numbers
+  if (name.length < 2 || name.length >= 255) {
+    throw Error("Name must be between 2 and 254 characters long.")
+  }
+
+  if (!name.match(/^[a-z.\- ]/i)) {
+    throw Error("Name contains an invalid character.")
+  }
+}
+</script>
+
 <script setup>
 import { ref } from "vue"
-import { validateName } from "../../services/validation"
 import TextInput from "../base/TextInput.vue"
 
 const modelValue = ref("")
