@@ -31,10 +31,8 @@ const formData = reactive({
  * Checks if form state has any valid data.
  * @returns {boolean} True if any field has input, otherwise false.
  */
-const hasData = () => {
-  console.log(Object.keys(formData))
-  return Object.keys(formData).filter((prop) => formData[prop] !== "").length
-}
+const hasData = () =>
+  Object.keys(formData).filter((prop) => formData[prop] !== "").length
 
 const handleSubmit = () => {
   console.log("Form submitted with data:", formData.value)
