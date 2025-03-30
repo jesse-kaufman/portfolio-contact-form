@@ -17,19 +17,35 @@
         </div>
       </div>
       <div v-if="formData.message.value" class="message input-item">
-        <p>{{ formData.message.value }}</p>
+        <p v-html="formattedMessage"></p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from "vue"
+
 // Props definition
-defineProps({
+const props = defineProps({
   formData: {
     type: Object,
     required: true,
   },
+})
+
+// Computed property to format the message with URLs converted to links
+const formattedMessage = computed(() => {
+  const message = props.formData.message.value || ""
+  // Regex to find URLs
+  const urlPattern = /(https?:\/\/[^\s]+)/g
+
+  // Replace URLs with anchor tags
+  return message.replace(
+    urlPattern,
+    (url) =>
+      `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+  )
 })
 </script>
 
