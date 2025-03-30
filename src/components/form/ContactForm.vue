@@ -5,7 +5,7 @@
     <PhoneInput v-model="formData.phone.value" />
     <MessageInput v-model="formData.message.value"></MessageInput>
     <div class="input-submit">
-      <button type="submit" disabled>Submit</button>
+      <button type="submit" :disabled="!isFormValid">Submit</button>
     </div>
   </form>
 
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { reactive } from "vue"
+import { reactive, computed } from "vue"
 import PhoneInput from "../inputs/PhoneInput.vue"
 import EmailInput from "../inputs/EmailInput.vue"
 import MessageInput from "../inputs/MessageInput.vue"
@@ -31,8 +31,17 @@ const formData = reactive({
  * Checks if form state has any valid data.
  * @returns {boolean} True if any field has input, otherwise false.
  */
-const hasData = () =>
-  Object.keys(formData).filter((prop) => formData[prop] !== "").length
+/**
+ * Checks if form is valid.
+ */
+const isFormValid = computed(() => {
+  console.log(
+    Object.values(formData).every((field) => !field.error && field.value !== "")
+  )
+  return Object.values(formData).every(
+    (field) => !field.error && field.value !== ""
+  )
+})
 
 const handleSubmit = () => {
   console.log("Form submitted with data:", formData.value)
