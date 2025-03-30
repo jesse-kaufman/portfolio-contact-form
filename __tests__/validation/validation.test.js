@@ -2,6 +2,7 @@
 /** @file Validation tests for contact form. */
 import { describe, expect, it } from "vitest"
 import {
+  validateMessage,
   validateEmail,
   validateName,
   validatePhone,
@@ -49,6 +50,18 @@ describe("Contact form validation", () => {
 
     it("throws an error for invalid email", () => {
       expect(() => validatePhone("481516")).toThrowError()
+    })
+  })
+
+  // Test message input validation.
+  describe("message", () => {
+    it("validates proper message", () => {
+      // Test validating valid message.
+      expect(() => validateMessage("This is a message.")).not.toThrowError()
+    })
+
+    it("throws an error for invalid message", () => {
+      expect(() => validateMessage("Hey.")).toThrowError()
     })
   })
 })
