@@ -2,7 +2,7 @@
 
 import { describe, it, expect } from "vitest"
 import { render, fireEvent } from "@testing-library/vue"
-import EmailInput from "@/components/inputs/EmailInput.vue"
+import EmailInput, { validateEmail } from "@/components/inputs/EmailInput.vue"
 
 describe("EmailInput.vue", () => {
   // Tests for component rendering.
@@ -13,19 +13,30 @@ describe("EmailInput.vue", () => {
     })
   })
 
+  // Test email input validation.
+  describe("input validation", () => {
+    it("validates proper email", () => {
+      expect(() => validateEmail("john.locke@example.com")).not.toThrowError()
+    })
+
+    it("throws an error for invalid email", () => {
+      expect(() => validateEmail("john locke@example")).toThrowError()
+      expect(() => validateEmail("Sayid")).toThrowError()
+    })
+  })
+
   // Tests for component interaction.
   describe("interaction", () => {
+    // Test setting a valid value.
     it("binds the value correctly with v-model", async () => {
       const { getByLabelText } = render(EmailInput)
       const input = getByLabelText("Your Email:")
       await fireEvent.update(input, "john.lock@example.com")
       expect(input.value).toBe("john.lock@example.com")
     })
-  })
 
-  // Tests for component validation.
-  describe("validation", () => {
-    it("validates value correctly with v-model", async () => {
+    // Test setting an invalid value.
+    it("throws error when setting invalid data with v-model", async () => {
       const { getByText, getByLabelText } = render(EmailInput)
       const input = getByLabelText("Your Email:")
       await fireEvent.update(input, "J")
