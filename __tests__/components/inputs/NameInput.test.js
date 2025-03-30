@@ -3,7 +3,8 @@
 
 import { describe, it, expect } from "vitest"
 import { render, fireEvent } from "@testing-library/vue"
-import NameInput, { validateName } from "@/components/inputs/NameInput.vue"
+import { mount } from "@vue/test-utils"
+import NameInput from "@/components/inputs/NameInput.vue"
 
 describe("NameInput.vue", () => {
   // Tests for component rendering.
@@ -17,20 +18,26 @@ describe("NameInput.vue", () => {
   // Test name input validation.
   describe("input validation", () => {
     it("validates proper name", () => {
+      const instance = mount(NameInput).vm
+
       // Test if first name only was provided.
-      expect(() => validateName("Jack")).not.toThrowError()
+      expect(() => instance.validateName("Jack")).not.toThrowError()
       // Test if full name was provided.
-      expect(() => validateName("Jack Sawyer")).not.toThrowError()
+      expect(() => instance.validateName("Jack Sawyer")).not.toThrowError()
       // Test if extra-long full name was provided.
-      expect(() => validateName("Jack L. Sawyer III")).not.toThrowError()
+      expect(() =>
+        instance.validateName("Jack L. Sawyer III")
+      ).not.toThrowError()
     })
 
     it("throws an error for invalid name", () => {
+      const instance = mount(NameInput).vm
+
       // Test too-short name.
-      expect(() => validateName("a")).toThrowError()
+      expect(() => instance.validateName("a")).toThrowError()
       // Test too-long name.
       // eslint-disable-next-line no-magic-numbers
-      expect(() => validateName("a".repeat(255))).toThrowError()
+      expect(() => instance.validateName("a".repeat(255))).toThrowError()
     })
   })
 
