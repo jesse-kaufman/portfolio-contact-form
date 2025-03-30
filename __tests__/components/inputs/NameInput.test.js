@@ -22,4 +22,16 @@ describe("NameInput.vue", () => {
       expect(input.value).toBe("John Locke")
     })
   })
+
+  // Tests for component validation.
+  describe("validation", () => {
+    it("validates value correctly with v-model", async () => {
+      const { getByText, getByLabelText } = render(NameInput)
+      const input = getByLabelText("Your Name:")
+      await fireEvent.update(input, "J")
+      expect(
+        getByText("Name must be between 2 and 254 characters long.")
+      ).toBeInTheDocument()
+    })
+  })
 })
