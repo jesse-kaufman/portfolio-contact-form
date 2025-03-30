@@ -6,7 +6,7 @@ import { fireEvent, render, screen } from "@testing-library/vue"
 import ContactForm from "@/components/form/ContactForm.vue"
 
 describe("ContactForm component", () => {
-  test("renders the contact form", () => {
+  it("renders the contact form", () => {
     render(ContactForm)
 
     // Check name field.
