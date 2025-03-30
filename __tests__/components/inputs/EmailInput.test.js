@@ -9,7 +9,7 @@ describe("EmailInput.vue", () => {
   describe("rendering", () => {
     it("renders the input with the correct label", () => {
       const { getByLabelText } = render(EmailInput)
-      expect(getByLabelText("Your Name:")).toBeInTheDocument()
+      expect(getByLabelText("Your Email:")).toBeInTheDocument()
     })
   })
 
