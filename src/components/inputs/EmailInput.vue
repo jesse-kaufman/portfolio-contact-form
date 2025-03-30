@@ -12,6 +12,7 @@
 <script setup>
 import { ref } from "vue"
 import TextInput from "../base/TextInput.vue"
+
 /**
  * Validates email input field.
  * @param {string} email - Input to be validated.
