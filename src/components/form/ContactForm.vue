@@ -1,15 +1,7 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <NameInput v-model="formData.name" />
-    <TextInput
-      v-model="formData.email"
-      label="Your Email"
-      name="email"
-      type="text"
-      :validator="validateEmail"
-      required
-      placeholder="john.locke@example.com"
-    />
+    <EmailInput v-model="formData.email" />
     <TextInput
       v-model="formData.phone"
       label="Your Phone"
@@ -29,8 +21,9 @@
 
 <script setup>
 import { reactive } from "vue"
-import { validateEmail, validatePhone } from "../../services/validation"
+import { validatePhone } from "../../services/validation"
 import TextInput from "../base/TextInput.vue"
+import EmailInput from "../inputs/EmailInput.vue"
 import MessageInput from "../inputs/MessageInput.vue"
 import NameInput from "../inputs/NameInput.vue"
 import Preview from "./FormPreview.vue"
