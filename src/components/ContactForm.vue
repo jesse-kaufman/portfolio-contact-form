@@ -34,7 +34,7 @@
 import { reactive } from "vue"
 import TextInput from "./TextInput.vue"
 import MessageInput from "./MessageInput.vue"
-import Preview from "./Preview.vue"
+import Preview from "./FormPreview.vue"
 
 const formData = reactive({
   name: "",
