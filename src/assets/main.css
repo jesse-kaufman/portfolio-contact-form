@@ -30,6 +30,7 @@ input {
 input,textarea {
   margin-bottom: 0.2em;
   font-family: inherit;
+  font-size: 1.2em;
 }
 div.input-text {
   margin-bottom: 1em;
