@@ -1,4 +1,5 @@
 /** @file ContactForm.vue tests. */
+/* eslint-disable max-lines-per-function */
 /* eslint-disable max-statements */
 import { describe, expect, it } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/vue"

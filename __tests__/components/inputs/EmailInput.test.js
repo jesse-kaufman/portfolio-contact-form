@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 /** @file EmailInput component tests. */
 
 import { describe, expect, it } from "vitest"
