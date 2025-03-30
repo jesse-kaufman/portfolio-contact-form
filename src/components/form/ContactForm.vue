@@ -9,7 +9,7 @@
     </div>
   </form>
 
-  <Preview v-if="hasData()" :form-data="formData"></Preview>
+  <Preview v-if="hasData" :form-data="formData"></Preview>
 </template>
 
 <script setup>
@@ -31,6 +31,11 @@ const formData = reactive({
  * Checks if form state has any valid data.
  * @returns {boolean} True if any field has input, otherwise false.
  */
+const hasData = computed(
+  () =>
+    Object.keys(formData).filter((prop) => formData[prop].value !== "").length
+)
+
 /**
  * Checks if form is valid.
  */
