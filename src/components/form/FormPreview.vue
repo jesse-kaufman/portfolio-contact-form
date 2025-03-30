@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div class="preview-container">
     <strong>Message preview:</strong>
