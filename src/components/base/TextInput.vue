@@ -3,7 +3,7 @@
     <label :for="name">{{ label }}:</label>
     <input
       :id="name"
-      v-model="modelValue"
+      v-model="model"
       v-bind="$attrs"
       :name="name"
       :type="type"
@@ -42,6 +42,8 @@ export const validateTypeProp = (type) => {
 <script setup>
 import { ref } from "vue"
 
+const model = defineModel({ type: String, default: "" })
+
 // Props definition
 const props = defineProps({
   type: {
@@ -49,7 +51,6 @@ const props = defineProps({
     default: "text",
     validator: validateTypeProp,
   },
-  modelValue: { type: String, default: "" },
   name: { type: String, default: "" },
   label: { type: String, default: "" },
   validator: { type: Function, default: null },
@@ -57,8 +58,7 @@ const props = defineProps({
 })
 
 // Emits definition
-const emit = defineEmits(["update:modelValue", "update:error"])
-const { modelValue } = props
+const emit = defineEmits(["update:error"])
 const error = ref(false) // Error state
 const errorMessage = ref("") // Error message
 
@@ -71,20 +71,21 @@ const updateValue = (event) => {
 
   // Emit update event if no validator is set.
   if (props.validator == null) {
-    emit("update:modelValue", newValue)
-    return
-  }
+    model.value = newValue
+    console.log("no validator")
+  } else {
+    try {
+      props.validator(newValue)
+      console.log("validated")
+      // Update value if valid.
+      model.value = newValue
+    } catch (err) {
+      // Set error state and message.
+      error.value = true
+      errorMessage.value = err.message
+    }
 
-  try {
-    props.validator(newValue)
-    // Emit update event if valid.
-    emit("update:modelValue", newValue)
-  } catch (err) {
-    // Set error state and message.
-    error.value = true
-    errorMessage.value = err.message
+    emit("update:error", error.value)
   }
-
-  emit("update:error", error.value)
 }
 </script>

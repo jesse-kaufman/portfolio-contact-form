@@ -2,7 +2,7 @@
   <label for="message">Message:</label>
   <textarea
     id="message"
-    v-model="modelValue"
+    v-model="model"
     name="message"
     placeholder="Type your message here."
     required
@@ -15,13 +15,10 @@
 <script setup>
 import { ref } from "vue"
 
-const props = defineProps({
-  modelValue: { type: String, default: "" },
-})
+const model = defineModel({ type: String, default: "" })
 
 // Emits definition
-const emit = defineEmits(["update:modelValue", "update:error"])
-const { modelValue } = props
+const emit = defineEmits(["update:error"])
 const error = ref(false) // Error state
 const errorMessage = ref("") // Error message
 
@@ -48,7 +45,7 @@ const updateValue = (event) => {
   try {
     validateMessage(newValue)
     // Emit update event if valid.
-    emit("update:modelValue", newValue)
+    model.value = newValue
   } catch (err) {
     // Set error state and message.
     error.value = true
