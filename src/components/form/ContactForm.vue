@@ -25,7 +25,8 @@
 </template>
 
 <script setup>
-import { reactive, computed } from "vue"
+import { reactive, computed, ref } from "vue"
+import axios from "axios"
 import PhoneInput from "../inputs/PhoneInput.vue"
 import EmailInput from "../inputs/EmailInput.vue"
 import MessageInput from "../inputs/MessageInput.vue"
@@ -38,6 +39,9 @@ const formData = reactive({
   phone: { value: "", error: false },
   message: { value: "", error: false },
 })
+
+const submitResponse = ref("")
+const submitError = ref(false)
 
 const updateError = (field, error) => {
   formData[field].error = error
@@ -59,8 +63,30 @@ const isFormValid = computed(() =>
   Object.values(formData).every((field) => !field.error && field.value !== "")
 )
 
-const handleSubmit = () => {
-  console.log("Form submitted with data:")
-  console.log(formData.value)
+const handleSubmit = async () => {
+  const submitData = Object.keys(formData).reduce((acc, key) => {
+    // Add each 'key' with its 'value' to the accumulator (acc)
+    acc[key] = formData[key].value
+    return acc // Return the updated accumulator for the next iteration
+  }, {}) // Initial value is an empty object
+  console.log(submitData)
+  try {
+    const response = await axios.post(
+      "http://localhost:3000/api/v1/submit",
+      submitData
+    )
+
+    // Save response in form state.
+    submitResponse.value = "Form submitted successfully!"
+    console.log(response.data)
+  } catch (err) {
+    // Set form error state.
+    submitError.value = true
+    // Save response in form state.
+    submitResponse.value = err.response
+      ? err.response.data.message
+      : err.message
+    console.error(err)
+  }
 }
 </script>
